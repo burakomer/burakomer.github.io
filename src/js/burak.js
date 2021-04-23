@@ -25,11 +25,14 @@ jQuery(function () {
 });
 
 function responsiveUpdate() {
+  var slider = $("div#projects").find("div:first");
   var win = $(this); //this = window
   if (win.width() < 768) {
     $("body").css("font-size", "16px");
+    slider.removeClass("container p-5").addClass("container-fluid");
   } else {
     $("body").css("font-size", "19px");
+    slider.removeClass("container-fluid").addClass("container p-5");
   }
 }
 
