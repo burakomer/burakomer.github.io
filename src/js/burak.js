@@ -24,6 +24,11 @@ jQuery(function () {
 
   responsiveUpdate();
   $(window).on("resize", responsiveUpdate);
+
+  var selfPortrait = $(".self-portrait");
+  selfPortrait.width(selfPortrait.width() * 0.4);
+
+  $(".carousel-caption").addClass("rounded-rect-sm bg-semiopaque p-2");
 });
 
 function responsiveUpdate() {

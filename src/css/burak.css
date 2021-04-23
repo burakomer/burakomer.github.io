@@ -17,6 +17,14 @@ body {
      font-weight: 900;
  }
 
+ .rounded-rect {
+    border-radius: 23px;
+ }
+
+ .rounded-rect-sm {
+    border-radius: 11px;
+ }
+
  .social {
     font-size: 32px;
     padding-left: 8px;
