@@ -5,8 +5,8 @@ jQuery(function () {
     if (window.scrollY > 0) {
       navbar.addClass("fixed-top");
       // add padding top to show content behind navbar
-      navbar_height = doc.find(".navbar").outerHeight(true);
-      doc.find("body").css("padding-top", `${navbar_height}px`);
+      navbarHeight = doc.find(".navbar").outerHeight(true);
+      doc.find("body").css("padding-top", `${navbarHeight}px`);
     } else {
       navbar.removeClass("fixed-top");
       // remove padding top from body
@@ -28,12 +28,15 @@ jQuery(function () {
 
 function responsiveUpdate() {
   var slider = $("div#projects").find("div:first");
+  var aboutText = $(".about-text");
   var win = $(this); //this = window
   if (win.width() < 750) {
     $(".carousel-caption").css("font-size", "14px");
     slider.removeClass("container p-5").addClass("container-fluid");
+    aboutText.removeClass("ps-5");
   } else {
     $(".carousel-caption").css("font-size", "19px");
     slider.removeClass("container-fluid").addClass("container p-5");
+    aboutText.addClass("ps-5");
   }
 }
