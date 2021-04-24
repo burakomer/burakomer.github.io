@@ -6,6 +6,13 @@ jQuery(function () {
 });
 
 function Init() {
+  $(".body-element").each(function (){
+    var element = $(this);
+    var paddingTop = parseInt(element.css("padding-top"), 10);
+    element.css("scroll-margin-top", paddingTop)
+  });
+
+
   $(".body-element:even").addClass("bg-light");
   $("h1").addClass("thick-header").addClass("pb-3");
   $("h2").addClass("thick-header");
@@ -13,7 +20,7 @@ function Init() {
   $("h4").addClass("thick-header");
   $("h5").addClass("thick-header");
 
-  var firstBodyElement = $("#about");
+  var firstBodyElement = $(".body-element:first");
   var currentPaddingTop = parseInt(firstBodyElement.css("padding-top"), 10);
   var newPadding = currentPaddingTop + $(".navbar").outerHeight(true);
   console.log({newPadding});
