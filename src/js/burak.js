@@ -2,7 +2,7 @@ jQuery(function () {
   Init();
 
   $(window).on("scroll", onWindowScroll);
-  $("a.nav-link").on("click", onNavLinkClick);
+  $(".nav-link a").on("click", onNavLinkClick);
 });
 
 function Init() {
@@ -61,7 +61,25 @@ function onWindowScroll() {
   $("#site-navbar").collapse("hide");
 }
 
-function onNavLinkClick() {
+function onNavLinkClick(event) {
   // Collapse navbar when clicking on a link.
   $("#site-navbar").collapse("hide");
+  smoothScroll(event);
+}
+
+function smoothScroll(event) {
+  if (this.hash !== "") {
+    event.preventDefault();
+
+    var hash = this.hash;
+    $("html, body").animate(
+      {
+        scrollTop: $(hash).offset().top,
+      },
+      1300,
+      function () {
+        window.location.hash = hash;
+      }
+    );
+  }
 }
