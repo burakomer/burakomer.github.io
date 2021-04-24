@@ -70,7 +70,6 @@ function onNavLinkClick(event) {
 function smoothScroll(event, click) {
   var hash = click.hash !== "" ? click.hash : "#";
   var scrollTop = { scrollTop: click.hash !== "" ? $(hash).offset().top : 0 };
-  console.log({ hash });
   event.preventDefault();
   $("html, body").animate(scrollTop, 300, function () {
     window.location.hash = hash;
