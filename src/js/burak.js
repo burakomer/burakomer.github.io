@@ -11,7 +11,6 @@ function Init() {
     var element = $(this);
     var paddingTop = parseInt(element.css("padding-top"), 10);
     element.css("scroll-margin-top", paddingTop);
-    element.css("scroll-snap-margin-top", paddingTop);
   });
 
   // Theming
@@ -27,6 +26,7 @@ function Init() {
   var currentPaddingTop = parseInt(firstBodyElement.css("padding-top"), 10);
   var newPadding = currentPaddingTop + $(".navbar").outerHeight(true);
   firstBodyElement.removeClass("pt-5");
+  console.log({ currentPaddingTop });
   firstBodyElement.css("padding-top", `${newPadding}px`);
 
   responsiveUpdate();
@@ -69,9 +69,11 @@ function onNavLinkClick(event) {
 
 function smoothScroll(event, click) {
   var hash = click.hash !== "" ? click.hash : "#";
-  var scrollTop = { scrollTop: click.hash !== "" ? $(hash).offset().top : 0 };
+  var scrollTop = {
+    scrollTop: click.hash !== "" ? $(hash).offset().top - parseInt($(hash).css("padding-top"), 10) : 0,
+  };
   event.preventDefault();
   $("html, body").animate(scrollTop, 300, function () {
-    window.location.hash = hash;
+    //window.location.hash = hash;
   });
 }

@@ -3,7 +3,6 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 19px;
-  scroll-behavior: smooth;
 }
 
 .thick-header {
@@ -18,14 +17,16 @@ body {
   font-weight: 900;
 }
 
+.carousel-inner {
+  z-index: 0;
+}
+
 .rounded-rect {
   border-radius: 23px;
-  overflow: hidden;
 }
 
 .rounded-rect-sm {
   border-radius: 11px;
-  overflow: hidden;
 }
 
 .social {
