@@ -5,49 +5,48 @@ body {
   font-size: 19px;
 }
 
-.thick-header{
-    font-weight: 700;
+.thick-header {
+  font-weight: 700;
 }
 
 .bg-semiopaque {
-    background-color: rgba(0, 0, 0, 0.4);
- }
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
- .navbar-brand {
-     font-weight: 900;
- }
+.navbar-brand {
+  font-weight: 900;
+}
 
- .rounded-rect {
-    border-radius: 23px;
- }
+.rounded-rect {
+  border-radius: 23px;
+}
 
- .rounded-rect-sm {
-    border-radius: 11px;
- }
+.rounded-rect-sm {
+  border-radius: 11px;
+}
 
- .social {
-    font-size: 32px;
-    padding-left: 8px;
-    padding-right: 8px;
- }
+.social {
+  font-size: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
 
- .social-email {
-    color: coral;
- }
+.social-email {
+  color: coral;
+}
 
 .social-instagram {
-    color: palevioletred;
- }
+  color: palevioletred;
+}
 
- 
 .social-twitter {
-    color: deepskyblue;
- }
+  color: deepskyblue;
+}
 
- .social-github {
-    color: #313131;
- }
+.social-github {
+  color: #313131;
+}
 
- .social-telegram {
-     color:cornflowerblue
- }
+.social-telegram {
+  color: cornflowerblue;
+}

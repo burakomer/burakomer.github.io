@@ -6,13 +6,14 @@ jQuery(function () {
 });
 
 function Init() {
-  $(".body-element").each(function (){
+  // To position navigation scrolling correctly.
+  $(".body-element").each(function () {
     var element = $(this);
     var paddingTop = parseInt(element.css("padding-top"), 10);
-    element.css("scroll-margin-top", paddingTop)
+    element.css("scroll-margin-top", paddingTop);
   });
 
-
+  // Theming
   $(".body-element:even").addClass("bg-light");
   $("h1").addClass("thick-header").addClass("pb-3");
   $("h2").addClass("thick-header");
@@ -20,12 +21,13 @@ function Init() {
   $("h4").addClass("thick-header");
   $("h5").addClass("thick-header");
 
+  // Compensate for the navbar
   var firstBodyElement = $(".body-element:first");
   var currentPaddingTop = parseInt(firstBodyElement.css("padding-top"), 10);
   var newPadding = currentPaddingTop + $(".navbar").outerHeight(true);
-  console.log({newPadding});
+  console.log({ newPadding });
   firstBodyElement.removeClass("pt-5");
-  firstBodyElement.css("padding-top", `${newPadding}px`)
+  firstBodyElement.css("padding-top", `${newPadding}px`);
 
   responsiveUpdate();
   $(window).on("resize", responsiveUpdate);
@@ -37,40 +39,29 @@ function Init() {
 }
 
 function responsiveUpdate() {
-  var slider = $("div#projects").find("div:first");
+  var carousel = $("div#projects").find("div:first");
   var aboutText = $(".about-text");
-  var win = $(this); //this = window
+  var win = $(window);
+
   if (win.width() < 750) {
+    // Update carousel-caption font size on phones to display correctly.
     $(".carousel-caption").css("font-size", "14px");
-    slider.removeClass("container p-5").addClass("container-fluid");
+    carousel.removeClass("container p-5").addClass("container-fluid");
+    // Update about-text padding to display correctly on phones.
     aboutText.removeClass("ps-5");
   } else {
     $(".carousel-caption").css("font-size", "19px");
-    slider.removeClass("container-fluid").addClass("container p-5");
+    carousel.removeClass("container-fluid").addClass("container p-5");
     aboutText.addClass("ps-5");
   }
 }
 
 function onWindowScroll() {
-  // var navbar = $("#navbar-top");
-  // var doc = $(document);
-  // if (window.scrollY > 0) {
-  //   navbar.addClass("fixed-top");
-  //   // add padding top to show content behind navbar
-  //   navbarHeight = doc.find(".navbar").outerHeight(true);
-  //   doc.find("body").css("padding-top", `${navbarHeight}px`);
-  // } else {
-  //   navbar.removeClass("fixed-top");
-  //   // remove padding top from body
-  //   document.body.style.paddingTop = "0px";
-  // }
+  // Collapse navbar when scrolling.
   $("#site-navbar").collapse("hide");
 }
 
 function onNavLinkClick() {
-  if (window.scrollY > 0) {
-    $("#site-navbar").collapse("hide");
-  } else {
-
-  }
+  // Collapse navbar when clicking on a link.
+  $("#site-navbar").collapse("hide");
 }
