@@ -11,6 +11,7 @@ function Init() {
     var element = $(this);
     var paddingTop = parseInt(element.css("padding-top"), 10);
     element.css("scroll-margin-top", paddingTop);
+    element.css("scroll-snap-margin-top", paddingTop);
   });
 
   // Theming
