@@ -24,8 +24,8 @@ function Init() {
   // Compensate for the navbar
   var firstBodyElement = $(".body-element:first");
   var currentPaddingTop = parseInt(firstBodyElement.css("padding-top"), 10);
-  var newPadding = currentPaddingTop + $(".navbar").outerHeight(true);
-  firstBodyElement.removeClass("pt-5");
+  var newPadding = (currentPaddingTop) + $(".navbar").outerHeight(true);
+  firstBodyElement.removeClass("pt-4");
   console.log({ currentPaddingTop });
   firstBodyElement.css("padding-top", `${newPadding}px`);
 
@@ -39,19 +39,20 @@ function Init() {
 }
 
 function responsiveUpdate() {
-  var carousel = $("div#projects").find("div:first");
+  var projects = $("div#projects");
+  var carousel = projects.find("div:first");
   var aboutText = $(".about-text");
   var win = $(window);
 
   if (win.width() < 750) {
     // Update carousel-caption font size on phones to display correctly.
     $(".carousel-caption").css("font-size", "14px");
-    carousel.removeClass("container p-5").addClass("container-fluid");
+    carousel.removeClass("container").addClass("container-fluid");
     // Update about-text padding to display correctly on phones.
     aboutText.removeClass("ps-5");
   } else {
     $(".carousel-caption").css("font-size", "19px");
-    carousel.removeClass("container-fluid").addClass("container p-5");
+    carousel.removeClass("container-fluid").addClass("container");
     aboutText.addClass("ps-5");
   }
 }
@@ -70,7 +71,7 @@ function onNavLinkClick(event) {
 function smoothScroll(event, click) {
   var hash = click.hash !== "" ? click.hash : "#";
   var scrollTop = {
-    scrollTop: click.hash !== "" ? $(hash).offset().top - parseInt($(hash).css("padding-top"), 10) : 0,
+    scrollTop: click.hash !== "" ? $(hash).offset().top - 23 - parseInt($(hash).css("padding-top"), 10) : 0,
   };
   event.preventDefault();
   $("html, body").animate(scrollTop, 300, function () {
