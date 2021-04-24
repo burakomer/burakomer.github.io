@@ -25,7 +25,6 @@ function Init() {
   var firstBodyElement = $(".body-element:first");
   var currentPaddingTop = parseInt(firstBodyElement.css("padding-top"), 10);
   var newPadding = currentPaddingTop + $(".navbar").outerHeight(true);
-  console.log({ newPadding });
   firstBodyElement.removeClass("pt-5");
   firstBodyElement.css("padding-top", `${newPadding}px`);
 
