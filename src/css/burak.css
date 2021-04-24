@@ -20,10 +20,12 @@ body {
 
 .rounded-rect {
   border-radius: 23px;
+  overflow: hidden;
 }
 
 .rounded-rect-sm {
   border-radius: 11px;
+  overflow: hidden;
 }
 
 .social {
