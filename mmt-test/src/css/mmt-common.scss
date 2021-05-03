@@ -1,0 +1,230 @@
+// VARIABLES
+
+:root {
+  --light: 255, 255, 255;
+  --light-darker: 189, 189, 189;
+  --dark: 0, 0, 0;
+  --navbar: var(--light);
+  --secondary-color: 217, 10, 44;
+  --secondary-color-darkened: 170, 3, 30;
+}
+
+$card-padding: 40px;
+
+// ANIMATIONS 
+
+@keyframes anim-fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes anim-fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+// MIXINS
+
+@mixin title($color) {
+  color: rgb($color);
+  font-weight: bold;
+}
+
+@mixin title-bold($color) {
+  @include title($color);
+  font-weight: 900;
+}
+
+@mixin title-bold-xlarge($color) {
+  @include title-bold($color);
+
+  font-size: x-large;
+}
+
+@mixin header-settings($fw, $c, $pt: 0, $pb: 0) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: $fw;
+    color: $c;
+    padding-top: $pt;
+    padding-bottom: $pb;
+  }
+}
+
+@mixin blur-shadow($x: 0, $y: 0, $b: 30px, $s: 0, $c: var(--dark), $ca: 0.16) {
+  box-shadow: $x $y $b $s rgba($c, $ca);
+}
+
+@mixin pill-bg($rad: 32px, $p: 12px, $p-lr: 16px, $c: rgb(var(--light))) {
+  background-color: $c;
+  border-radius: $rad;
+  padding: $p;
+  padding-left: $p-lr;
+  padding-right: $p-lr;
+}
+
+@mixin list-dim {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      color: color.adjust(dimgray, $lightness: +20%);
+    }
+  }
+}
+
+@mixin bg-red {
+  background-color: rgb(var(--secondary-color));
+}
+
+@mixin circular-photo($w: 913px, $h: 913px, $bc: rgb(var(--secondary-color))) {
+  .circular-photo {
+    position: relative;
+    .photo {
+      position: relative;
+      width: $w;
+      height: $h;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 43px solid $bc;
+    }
+
+    .icon-bottom-left {
+      z-index: 1;
+      position: absolute;
+      top: 70%;
+    }
+  }
+}
+
+@mixin image-mask($w, $h, $border, $border-radius) {
+  overflow: hidden;
+
+  width: $w;
+  height: $h;
+  border: $border;
+  border-radius: $border-radius;
+}
+
+@mixin button-press {
+  background-color: rgb(var(--light-darker));
+}
+
+@mixin pill-button($fw: bold, $p: 12px, $p-lr: 24px) {
+  @include pill-bg($p: $p, $p-lr: $p-lr);
+  @include blur-shadow($y: 10px);
+
+  width: max-content;
+  font-weight: $fw;
+  color: rgb(var(--dark));
+  border: none;
+}
+
+@mixin pill-button-x {
+  .pill-button {
+    @include pill-button($fw: 600);
+  }
+
+  .pill-button:active {
+    @include button-press;
+  }
+
+  @for $i from 1 through 9 {
+    $thickness: $i * 100;
+    .pill-button-#{$thickness} {
+      @include pill-button($fw: $thickness);
+    }
+  }
+
+  @for $i from 1 through 9 {
+    $thickness: $i * 100;
+    .pill-button-#{$thickness}:active {
+      @include button-press;
+    }
+  }
+}
+
+@mixin circle-deco-light {
+  width: 50px;
+  height: 50px;
+  border: 8px solid rgba(var(--light), 0.8);
+  border-radius: 50%;
+}
+
+@mixin horizontal-line($w: auto, $h: 2px, $mt: 24px, $mb: 24px, $ca: 1) {
+  border-bottom: $h solid rgba(var(--secondary-color), $ca);
+  width: auto;
+  margin-top: $mt;
+  margin-bottom: $mb;
+
+  $m-lr: calc(#{$w} / 2);
+  margin-left: $m-lr;
+  margin-right: $m-lr;
+}
+
+// CLASSES
+
+@include pill-button-x;
+
+.card-element {
+  position: relative;
+
+  .card-contents {
+    @include blur-shadow($y: 10px);
+
+    background-color: rgb(var(--light));
+    border-radius: 31px;
+
+    @include list-dim;
+
+    padding: $card-padding;
+
+    li {
+      list-style: none;
+    }
+
+    .h-line {
+      @include horizontal-line($ca: 0.22);
+    }
+
+    h1 {
+      @include title-bold-xlarge(var(--dark));
+    }
+
+    p {
+      color: color.adjust(dimgray, $lightness: +20%);
+    }
+  }
+}
+
+.section-header {
+  @include media-breakpoint-down(sm) {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .section-title {
+    padding-top: 16px;
+    width: max-content;
+
+    p {
+      @include title(var(--light));
+      @include pill-bg($c: rgb(var(--secondary-color)));
+      text-align: center;
+    }
+  }
+
+  @include header-settings($fw: bold, $c: rgb(var(--dark)), $pt: 12px);
+
+  div.list {
+    padding-bottom: 64px;
+
+    @include media-breakpoint-down(xl) {
+      padding-bottom: 32px;
+    }
+  }
+}
