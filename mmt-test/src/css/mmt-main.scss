@@ -3,28 +3,28 @@
 @import "../../vendor/bootstrap/scss/bootstrap";
 @import "mmt-common";
 
+html,
 body {
-  background-color: var(--background);
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-
-  span.contact {
-    @include pill-bg(12px, 8px, 24px, rgb(var(--secondary-color)));
-    color: rgb(var(--light));
-  }
+body {
+  background-color: var(--background);
 }
 
 .container {
-  @include media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(xl) {
     max-width: 1500px;
   }
 }
 
 #navbar-top {
   background-color: rgb(var(--navbar));
+
+  a span.contact {
+    @include pill-bg(12px, 8px, 24px, rgb(var(--secondary-color)));
+    color: rgb(var(--light));
+  }
 }
 
 #navbar-top-links a {
@@ -36,8 +36,8 @@ a {
   margin-bottom: 50px;
 
   @include media-breakpoint-down(lg) {
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -235,21 +235,65 @@ a {
 }
 
 #projects {
-  padding-top: 128px;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-slide:nth-child(2n) {
+    width: 50%;
+  }
+
+  .slide-card {
+    height: 300px;
+    background: salmon;
+    border-radius: 2rem;
+    overflow: hidden;
+
+    @include media-breakpoint-down(md) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
 }
 
 #showcase-red {
   @include bg-red;
   z-index: -1;
   position: relative;
+  margin-top: 8rem;
 
   .showcase-graphics {
-    padding-top: 64px;
+    padding-top: 4rem;
     z-index: -1;
     @include circular-photo(800px, 800px, rgb(var(--light)));
     .circular-photo {
+      @include media-breakpoint-down(xxxl) {
+        transform: translateX(-10%);
+      }
+
+      @include media-breakpoint-down(xxl) {
+        transform: translateX(-40%);
+      }
+
+      @include media-breakpoint-down(xl) {
+        transform: translateX(-160%);
+        padding-bottom: 4rem;
+      }
+
       @include media-breakpoint-down(lg) {
-        transform: translateX(-90%);
+        display: none;
+      }
+
+      .icon-bottom-left {
+        @include media-breakpoint-down(xxl) {
+          display: none;
+        }
       }
 
       .photo {
@@ -269,6 +313,10 @@ a {
         position: absolute;
         top: 5%;
         left: 5%;
+
+        @include media-breakpoint-down(xxl) {
+          display: none;
+        }
       }
 
       div#circle2 {
@@ -276,18 +324,32 @@ a {
         position: absolute;
         bottom: 5%;
         right: 5%;
+
+        @include media-breakpoint-down(xxl) {
+          display: none;
+        }
       }
     }
   }
 
   .showcase-left {
     z-index: 1;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 3rem;
+    padding-right: 3rem;
     transform: translateY(-14%);
 
+    @include media-breakpoint-down(lg) {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
     .showcase-promo {
-      @include image-mask(auto, 560px, 16px solid rgb(var(--light)), 69px);
+      @include image-mask(auto, 560px, 16px solid rgb(var(--light)), 4rem);
 
       img {
         transform: translateY(-10%);
@@ -295,7 +357,7 @@ a {
     }
 
     .showcase-text {
-      padding: 48px;
+      padding: 3rem;
       padding-bottom: 0;
 
       .text {
@@ -307,8 +369,7 @@ a {
       }
 
       .contact-button {
-        @include pill-button;
-        margin-top: 32px;
+        margin-top: 2rem;
       }
     }
   }
@@ -342,84 +403,87 @@ footer {
     height: 27%;
   }
 
-  .footer-menu {
-    @include blur-shadow;
+  .footer-menu-container {
+    padding: 2rem;
 
-    z-index: 1;
-    margin: 16px;
+    @include media-breakpoint-down(sm) {
+      padding: 1rem;
+    }
 
-    background-color: rgb(var(--light));
-
-    @include header-settings($fw: bold, $c: rgb(var(--dark)), $pt: 64px);
-
-    .footer-menu-left {
-
+    .footer-menu {
       @include blur-shadow;
 
-      text-align: center;
-      padding: 48px;
-      padding-left: 96px;
-      padding-right: 96px;
+      z-index: 1;
+      margin-bottom: 1rem;
 
-      .h-line {
-        @include horizontal-line($w: 50%, $h: 5px, $mb: 8px);
-      }
-    }
-    .footer-menu-right {
-      .nav {
-        background-color: rgb(var(--secondary-color-darkened));
-        height: 30%;
-        width: auto;
+      background-color: rgb(var(--light));
+
+      @include header-settings($fw: bold, $c: rgb(var(--dark)), $pt: 0px);
+
+      .footer-menu-left {
+        @include blur-shadow;
+
         text-align: center;
+        padding: 3rem;
+        padding-left: 6rem;
+        padding-right: 6rem;
 
-        .navlink {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        @include media-breakpoint-down(xl) {
+          padding-left: 3.2rem;
+          padding-right: 3.2rem;
         }
 
-        .navlink:hover {
-          background-color: rgb(var(--secondary-color));
-        }
-
-        a {
-          color: rgb(var(--light));
-          font-weight: 700;
-        }
-
-        .active {
-          background-color: rgb(var(--secondary-color));
+        .h-line {
+          @include horizontal-line($w: 50%, $h: 5px, $mb: 8px);
         }
       }
+      .footer-menu-right {
+        padding-bottom: 4rem;
 
-      .quick-links {
-        ul li {
-          list-style: none;
-        }
-      }
+        .below-nav {
+          padding-left: 4rem;
+          padding-right: 4rem;
 
-      .subscribe {
-        padding-top: 32px;
-        padding-left: 64px;
+          @include media-breakpoint-down(md) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
 
-        .sub-input {
-          border: none;
-          border-bottom: 3px solid rgba(var(--secondary-color), 0.22);
-        }
+          @include media-breakpoint-down(md) {
+          }
 
-        .sub-input:focus {
-          outline: none !important;
-          border: none;
-          border-bottom: 3px solid rgba(var(--secondary-color));
-        }
+          .quick-links {
+            padding-top: 4rem;
 
-        .sub-button {
-          padding: 6px;
-          padding-left: 16px;
-          padding-right: 16px;
-          //@include pill-button($p: 6px, $p-lr: 16px);
+            ul li {
+              list-style: none;
+            }
+          }
+
+          .subscribe {
+            padding-top: 2rem;
+
+            display: flex;
+            flex-direction: column;
+
+            .sub-input {
+              border: none;
+              border-bottom: 3px solid rgba(var(--secondary-color), 0.22);
+            }
+
+            .sub-input:focus {
+              outline: none !important;
+              border: none;
+              border-bottom: 3px solid rgba(var(--secondary-color));
+            }
+
+            .sub-button {
+              padding: 0.5rem;
+              padding-left: 1rem;
+              padding-right: 1rem;
+              //@include pill-button($p: 6px, $p-lr: 16px);
+            }
+          }
         }
       }
     }
@@ -431,5 +495,33 @@ footer {
     a {
       color: rgb(var(--light));
     }
+  }
+}
+
+.nav.footer-nav {
+  background-color: rgb(var(--secondary-color-darkened));
+  height: 8rem;
+  width: auto;
+  text-align: center;
+
+  .navlink {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navlink:hover {
+    background-color: rgb(var(--secondary-color));
+  }
+
+  a {
+    color: rgb(var(--light));
+    font-weight: 700;
+  }
+
+  .active {
+    background-color: rgb(var(--secondary-color));
   }
 }

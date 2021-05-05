@@ -1,6 +1,30 @@
 const ScreenSize = { xs: 1, sm: 2, md: 3, lg: 5, xl: 6 };
 Object.freeze(ScreenSize);
 
+var scrolledTop = true;
+
+var swiper = new Swiper(".swiper-container", {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  centeredSlides: true,
+  loop: true,
+  loopFillGroupWithBlank: true,
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1700: {
+      slidesPerView: 4,
+      spaceBetween: 30,
+    },
+  },
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+});
+
 jQuery(function () {
   fetchNews();
 
@@ -11,7 +35,7 @@ jQuery(function () {
 
 function responsiveUpdate() {
   var deviceSize = ScreenSize[getBootstrapDeviceSize()];
-  
+
   const navbarBrand = $(".navbar-brand");
   if (deviceSize <= ScreenSize.sm) {
     // Add padding to navbar-brand
@@ -22,7 +46,7 @@ function responsiveUpdate() {
   }
 
   const motto = $("h1#motto"); // Alter text shifting
-  const newsCards= $("#news .card-element"); // Change card column layout
+  const newsCards = $("#news .card-element"); // Change card column layout
   if (deviceSize <= ScreenSize.md) {
     motto.css("left", "5%");
     newsCards.removeClass("col").addClass("col-sm-6");
@@ -35,11 +59,12 @@ function responsiveUpdate() {
 function onScroll() {
   var scroll = $(window).scrollTop();
 
-  if (scroll <= 10) {
-    $("div.go-top-button").animate({opacity: 0}, 0.2);
-  }
-  else {
-    $("div.go-top-button").animate({opacity: 1}, 0.2);
+  if (scroll <= 10 && scrolledTop == false) {
+    $("div.go-top-button").animate({ opacity: 0 }, 0.2);
+    scrolledTop = true;
+  } else if (scroll > 10 && scrolledTop == true) {
+    $("div.go-top-button").animate({ opacity: 1 }, 0.2);
+    scrolledTop = false;
   }
 }
 
@@ -76,7 +101,6 @@ function fetchNews() {
       before us was indeed sublime. `,
       link: "#",
     },
-    
   ];
 
   var newsHtml = "";
