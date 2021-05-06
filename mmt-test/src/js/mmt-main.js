@@ -109,7 +109,7 @@ function fetchNews() {
     const item = news[i];
 
     newsHtml += `
-    <div class="col card-element g-4">
+    <div class="card-element g-4">
       <div class="card-contents">
         <ul>
           <li>

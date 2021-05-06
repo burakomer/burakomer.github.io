@@ -10729,7 +10729,7 @@ textarea.form-control-lg {
   }
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 :root {
@@ -10934,7 +10934,7 @@ a {
 .card-element .card-contents {
   box-shadow: 0 10px 30px 0 rgba(var(--dark), 0.16);
   background-color: rgb(var(--light));
-  border-radius: 31px;
+  border-radius: 2rem;
   padding: 40px;
 }
 .card-element .card-contents ul {
@@ -11153,44 +11153,47 @@ body {
     transform: translateY(0%);
   }
 }
-#cards .container {
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-count: 3;
-}
 @media (max-width: 991.98px) {
   #cards .container {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    padding-top: 2rem;
   }
 }
-@media (min-width: 1400px) {
-  #cards .container {
-    max-width: 1350px;
-  }
+#cards .card-contents {
+  min-height: 470px;
 }
-#cards .card-element {
-  min-height: 500px;
+@media (max-width: 1199.98px) {
+  #cards .card-contents {
+    min-height: 540px;
+  }
 }
 @media (max-width: 991.98px) {
-  #cards .card-element {
+  #cards .card-contents {
     min-height: auto;
   }
 }
-#cards .card-element:first-child {
+#cards .column:first-child {
   transform: translateY(20%);
 }
+@media (max-width: 1199.98px) {
+  #cards .column:first-child {
+    transform: translateY(10%);
+  }
+}
 @media (max-width: 991.98px) {
-  #cards .card-element:first-child {
+  #cards .column:first-child {
     transform: translateY(0%);
   }
 }
-#cards .card-element:last-child {
+#cards .column:last-child {
   transform: translateY(-20%);
 }
+@media (max-width: 1199.98px) {
+  #cards .column:last-child {
+    transform: translateY(-10%);
+  }
+}
 @media (max-width: 991.98px) {
-  #cards .card-element:last-child {
+  #cards .column:last-child {
     transform: translateY(0%);
   }
 }
@@ -11301,6 +11304,11 @@ body {
   padding-top: 8rem;
   padding-bottom: 4rem;
 }
+@media (max-width: 991.98px) {
+  #projects {
+    padding-top: 4rem;
+  }
+}
 #projects .swiper-slide img {
   display: block;
   width: 100%;
@@ -11328,6 +11336,11 @@ body {
   z-index: -1;
   position: relative;
   margin-top: 8rem;
+}
+@media (max-width: 991.98px) {
+  #showcase-red {
+    margin-top: 4rem;
+  }
 }
 #showcase-red .showcase-graphics {
   padding-top: 4rem;
@@ -11464,6 +11477,9 @@ body {
   margin-top: 2rem;
 }
 
+#news .section-header {
+  padding-bottom: 1rem;
+}
 #news .card-element {
   display: -webkit-flex;
   display: flex;

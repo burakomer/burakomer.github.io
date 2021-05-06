@@ -1,5 +1,5 @@
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 // VARIABLES
@@ -190,7 +190,7 @@ $card-padding: 40px;
     @include blur-shadow($y: 10px);
 
     background-color: rgb(var(--light));
-    border-radius: 31px;
+    border-radius: 2rem;
 
     @include list-dim;
 
